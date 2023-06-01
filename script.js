@@ -5,7 +5,6 @@
 fetchUserProfile();
 alert('found code')
   }
-}
 function login() {
   const CLIENT_ID = '1095020466852348024';
   const REDIRECT_URI = 'https://blockg2500.github.io/testweb/';
