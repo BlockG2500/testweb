@@ -1,6 +1,7 @@
 const storedCode = localStorage.getItem('discordCode');
 
 if (storedCode) {
+  alert('found stored')
   fetchUserProfile(storedCode);
 } else {
   const urlParams = new URLSearchParams(window.location.search);
@@ -13,7 +14,7 @@ fetchUserProfile(code);
     // Remove the code from the URL
     const newUrl = window.location.href.replace(`?code=${code}`, '');
     window.history.replaceState({}, document.title, newUrl);
-
+alert('found code')
   }
 }
 function login() {
@@ -54,7 +55,7 @@ function fetchUserProfile(code) {
 
     fetch(userProfileUrl, {
       headers: {
-        'Authorization': `Bearer ${accessToken}`
+        'Authorization': "Bearer ${accessToken}"
       }
     })
     .then(response => response.json())
