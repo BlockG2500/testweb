@@ -65,7 +65,7 @@ document.getElementById('email').value = discordEmail
 const storedCode = localStorage.getItem('discordCode');
 
 if (storedCode) {
-  fetchUserProfile(storedCode);
+  fetchUserProfile(code);
 } else {
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get('code');
@@ -73,11 +73,10 @@ if (storedCode) {
   if (code) {
     // Save the code to local storage
     localStorage.setItem('discordCode', code);
-
+fetchUserProfile(code);
     // Remove the code from the URL
     const newUrl = window.location.href.replace(`?code=${code}`, '');
     window.history.replaceState({}, document.title, newUrl);
 
-    fetchUserProfile(code);
   }
 }
