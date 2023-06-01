@@ -2,7 +2,7 @@ const storedCode = localStorage.getItem('discordCode');
 
 if (storedCode) {
   alert('found stored')
-  fetchUserProfile(storedCode);
+  fetchUserProfile();
 } else {
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get('code');
@@ -10,7 +10,7 @@ if (storedCode) {
   if (code) {
     // Save the code to local storage
     localStorage.setItem('discordCode', code);
-fetchUserProfile(code);
+fetchUserProfile();
     // Remove the code from the URL
     const newUrl = window.location.href.replace(`?code=${code}`, '');
     window.history.replaceState({}, document.title, newUrl);
@@ -20,17 +20,17 @@ alert('found code')
 function login() {
   const CLIENT_ID = '1095020466852348024';
   const REDIRECT_URI = 'https://blockg2500.github.io/testweb/';
-  const SCOPE = 'identify email';
+  const SCOPE = 'identify email guilds';
 
   const authUrl = `https://discord.com/api/oauth2/authorize?client_id=1095020466852348024&redirect_uri=https%3A%2F%2Fblockg2500.github.io%2Ftestweb%2F&response_type=code&scope=identify%20email%20guilds`;
   window.location.href = authUrl;
 }
 
-function fetchUserProfile(code) {
+function fetchUserProfile() {
   const CLIENT_ID = '1095020466852348024';
   const CLIENT_SECRET = 'X02Qw8piq25dXxekVNyjzV0paY1_-i-2';
   const REDIRECT_URI = 'https://blockg2500.github.io/testweb/';
-
+  const SCOPE = 'identify email guilds';
   const tokenUrl = 'https://discord.com/api/oauth2/token';
   const userProfileUrl = 'https://discord.com/api/users/@me';
 
@@ -38,7 +38,7 @@ function fetchUserProfile(code) {
   data.append('client_id', CLIENT_ID);
   data.append('client_secret', CLIENT_SECRET);
   data.append('grant_type', 'authorization_code');
-  data.append('code', code);
+  data.append('code', storedCode);
   data.append('redirect_uri', REDIRECT_URI);
   data.append('scope', SCOPE);
 
