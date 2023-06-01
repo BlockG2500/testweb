@@ -1,9 +1,9 @@
-
-  const urlParams = new URLSearchParams(window.location.search);
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
   const code = urlParams.get('code');
   if (code) { 
 fetchUserProfile();
-alert('found code')
+alert('found code');
   }
 function login() {
   const CLIENT_ID = '1095020466852348024';
