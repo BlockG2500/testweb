@@ -1,7 +1,7 @@
 function login() {
   const CLIENT_ID = '1095020466852348024';
   const REDIRECT_URI = 'https://blockg2500.github.io/testweb/';
-  const SCOPE = 'identify email guilds';
+  const SCOPE = 'identify email';
 
   const authUrl = `https://discord.com/api/oauth2/authorize?client_id=1095020466852348024&redirect_uri=https%3A%2F%2Fblockg2500.github.io%2Ftestweb%2F&response_type=code&scope=identify%20email%20guilds`;
 
@@ -45,9 +45,9 @@ function fetchUserProfile(code) {
       const discordName = user.username;
       const discordId = user.id;
       const discordEmail = user.email;
-document.getElementById('discordname').value = discordname;
-document.getElementById('ID').value = discordId;
-document.getElementById('email').value = discordEmail;
+document.getElementById('discordname').value = discordname
+document.getElementById('ID').value = discordId
+document.getElementById('email').value = discordEmail
       console.log(user);
     })
     .catch(error => {
@@ -62,9 +62,22 @@ document.getElementById('email').value = discordEmail;
 }
 
 // Check if the code exists in local storage
+const storedCode = localStorage.getItem('discordCode');
+
+if (storedCode) {
+  fetchUserProfile(storedCode);
+} else {
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get('code');
 
   if (code) {
+    // Save the code to local storage
+    localStorage.setItem('discordCode', code);
+
+    // Remove the code from the URL
+    const newUrl = window.location.href.replace(`?code=${code}`, '');
+    window.history.replaceState({}, document.title, newUrl);
+
     fetchUserProfile(code);
   }
+}
