@@ -1,4 +1,7 @@
 const storedCode = localStorage.getItem('discordCode');
+function clear() {
+   localStorage.removeItem('discordCode')
+}
 
 if (storedCode) {
   alert('found stored')
