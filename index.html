@@ -61,9 +61,9 @@ function fetchUserProfile(code) {
       const discordName = user.username;
       const discordId = user.id;
       const discordEmail = user.email;
-document.getElementById('discordname').value = discordname
-document.getElementById('ID').value = discordId
-document.getElementById('email').value = discordEmail
+document.getElementById('discordname').value = discordname;
+document.getElementById('ID').value = discordId;
+document.getElementById('email').value = discordEmail;
       console.log(user);
     })
     .catch(error => {
