@@ -11,14 +11,15 @@
   <input id="discordname">
   <input id=email>
   <input id=ID>
+  <button onclick=login()></button>
   Hello world
   <script src="script.js">
     function login() {
-  const CLIENT_ID = 'YOUR_CLIENT_ID';
-  const REDIRECT_URI = 'YOUR_REDIRECT_URI';
+  const CLIENT_ID = '1095020466852348024';
+  const REDIRECT_URI = 'https://blockg2500.github.io/testweb/';
   const SCOPE = 'identify email';
 
-  const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=${SCOPE}`;
+  const authUrl = `https://discord.com/api/oauth2/authorize?client_id=1095020466852348024&redirect_uri=https%3A%2F%2Fblockg2500.github.io%2Ftestweb%2F&response_type=code&scope=identify%20email%20guilds`;
 
   window.location.href = authUrl;
 }
@@ -26,7 +27,7 @@
 function fetchUserProfile(code) {
   const CLIENT_ID = '1095020466852348024';
   const CLIENT_SECRET = 'X02Qw8piq25dXxekVNyjzV0paY1_-i-2';
-  const REDIRECT_URI = 'YOUR_REDIRECT_URI';
+  const REDIRECT_URI = 'https://blockg2500.github.io/testweb/';
 
   const tokenUrl = 'https://discord.com/api/oauth2/token';
   const userProfileUrl = 'https://discord.com/api/users/@me';
@@ -60,6 +61,9 @@ function fetchUserProfile(code) {
       const discordName = user.username;
       const discordId = user.id;
       const discordEmail = user.email;
+document.getElementById('discordname').value = discordname
+document.getElementById('ID').value = discordId
+document.getElementById('email').value = discordEmail
       console.log(user);
     })
     .catch(error => {
