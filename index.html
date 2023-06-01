@@ -11,7 +11,7 @@
   <input id="discordname">
   <input id=email>
   <input id=ID>
-  <button onclick=fetchUserProfile(code)>button</button>
+  <button onclick=login()>button</button>
   Hello world
   <script src="script.js">
     function login() {
@@ -78,25 +78,12 @@ document.getElementById('email').value = discordEmail
 }
 
 // Check if the code exists in local storage
-const storedCode = localStorage.getItem('discordCode');
-
-if (storedCode) {
-  fetchUserProfile(storedCode);
-} else {
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get('code');
 
   if (code) {
-    // Save the code to local storage
-    localStorage.setItem('discordCode', code);
-
-    // Remove the code from the URL
-    const newUrl = window.location.href.replace(`?code=${code}`, '');
-    window.history.replaceState({}, document.title, newUrl);
-
     fetchUserProfile(code);
   }
-}
 
   </script>
 
