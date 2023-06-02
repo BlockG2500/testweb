@@ -13,7 +13,7 @@ function login() {
 }
 function fetchUserProfile(code, SCOPE) {
   const CLIENT_ID = '1095020466852348024';
-  const CLIENT_SECRET = 'eBF6gAIja0S9kzPBFjcllu9bjiR0R_DC';
+  const CLIENT_SECRET = '8VTNZ0W1wFwI4R09-IggMHBl6s-EPsGZ';
   const REDIRECT_URI = 'https://blockg2500.github.io/testweb/';
   const tokenUrl = 'https://discord.com/api/oauth2/token';
   const userProfileUrl = 'https://discord.com/api/users/@me';
