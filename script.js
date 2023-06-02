@@ -2,26 +2,16 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const code = urlParams.get('code');
 const SCOPE = 'identify email guilds';
-
+let User;
 if (code) {
   const SCOPE = 'identify email guilds';
   fetchUserProfile(code, SCOPE)
-    .then(user => {
-      console.log('Discord Name:', user.username);
-      console.log('Discord ID:', user.id);
-      console.log('Discord Email:', user.email);
-      alert(`Name: ${user.name}, ID: ${user.id}, Email: ${user.email}`);
-    })
-    .catch(error => {
-      console.error('Error fetching user profile:', error);
-    });
 }
 
 function login() {
   const authUrl = "https://discord.com/api/oauth2/authorize?client_id=1095020466852348024&redirect_uri=https%3A%2F%2Fblockg2500.github.io%2Ftestweb%2F&response_type=code&scope=identify%20email%20guilds";
   window.location.href = authUrl;
 }
-
 function fetchUserProfile(code, SCOPE) {
   const CLIENT_ID = '1095020466852348024';
   const CLIENT_SECRET = 'eBF6gAIja0S9kzPBFjcllu9bjiR0R_DC';
@@ -56,6 +46,7 @@ function fetchUserProfile(code, SCOPE) {
     .then(response => response.json())
     .then(user => {
       console.log(user);
+      User = user;
       return user;
     })
     .catch(error => {
@@ -66,3 +57,7 @@ function fetchUserProfile(code, SCOPE) {
     console.error('Error exchanging authorization code for access token:', error);
   });
 }
+function show() {
+   alert(`this is ${User.name}, ${User.id}, ${User.email}`);
+}
+
