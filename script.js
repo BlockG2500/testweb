@@ -18,7 +18,6 @@ function login() {
   const CLIENT_ID = '1095020466852348024';
   const REDIRECT_URI = 'https://blockg2500.github.io/testweb/';
   const SCOPE = 'identify email guilds';
-
   const authUrl = `https://discord.com/api/oauth2/authorize?client_id=1095020466852348024&redirect_uri=https%3A%2F%2Fblockg2500.github.io%2Ftestweb%2F&response_type=code&scope=identify%20email%20guilds`;
   window.location.href = authUrl;
 }
