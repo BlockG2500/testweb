@@ -9,6 +9,7 @@ if (code) {
       console.log('Discord Name:', user.username);
       console.log('Discord ID:', user.id);
       console.log('Discord Email:', user.email);
+      alert(`Name: ${user.name}, ID: ${user.id}, Email: ${user.email}`);
     })
     .catch(error => {
       console.error('Error fetching user profile:', error);
