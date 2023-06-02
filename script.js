@@ -2,7 +2,6 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const code = urlParams.get('code');
 const SCOPE = 'identify email guilds';
-let User;
 if (code) {
   const SCOPE = 'identify email guilds';
   fetchUserProfile(code, SCOPE)
@@ -46,7 +45,6 @@ function fetchUserProfile(code, SCOPE) {
     .then(response => response.json())
     .then(user => {
       console.log(user);
-      User = user;
       return user;
     })
     .catch(error => {
