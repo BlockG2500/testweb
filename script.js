@@ -58,6 +58,6 @@ function fetchUserProfile(code, SCOPE) {
   });
 }
 function show(user) {
-   alert(`this is ${user.name}, ${user.id}, ${user.email}`);
+   alert(`this is ${user.username}, ${user.id}, ${user.email}`);
 }
 
