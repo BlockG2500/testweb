@@ -4,7 +4,6 @@ const code = urlParams.get('code');
 const SCOPE = 'identify email guilds';
 
 if (code) {
-  alert(`found code`);
   const SCOPE = 'identify email guilds';
   fetchUserProfile(code, SCOPE)
     .then(user => {
@@ -25,7 +24,7 @@ function login() {
 
 function fetchUserProfile(code, SCOPE) {
   const CLIENT_ID = '1095020466852348024';
-  const CLIENT_SECRET = 'X02Qw8piq25dXxekVNyjzV0paY1_-i-2';
+  const CLIENT_SECRET = 'eBF6gAIja0S9kzPBFjcllu9bjiR0R_DC';
   const REDIRECT_URI = 'https://blockg2500.github.io/testweb/';
   const tokenUrl = 'https://discord.com/api/oauth2/token';
   const userProfileUrl = 'https://discord.com/api/users/@me';
@@ -56,9 +55,6 @@ function fetchUserProfile(code, SCOPE) {
     })
     .then(response => response.json())
     .then(user => {
-      const discordName = user.username;
-      const discordId = user.id;
-      const discordEmail = user.email;
       console.log(user);
       return user;
     })
