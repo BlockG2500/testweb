@@ -4,7 +4,7 @@ const code = urlParams.get('code');
 const SCOPE = 'identify email guilds';
 if (code) {
   const SCOPE = 'identify email guilds';
-  fetchUserProfile(code, SCOPE)
+  fetchUserProfile(code, SCOPE);
 }
 
 function login() {
