@@ -4,6 +4,8 @@ const code = urlParams.get('code');
 const SCOPE = 'identify email guilds';
 
 if (code) {
+  alert(`found code`);
+  const SCOPE = 'identify email guilds';
   fetchUserProfile(code, SCOPE)
     .then(user => {
       console.log('Discord Name:', user.username);
@@ -58,6 +60,7 @@ function fetchUserProfile(code, SCOPE) {
       const discordId = user.id;
       const discordEmail = user.email;
       console.log(user);
+      return user;
     })
     .catch(error => {
       console.error('Error fetching user profile:', error);
