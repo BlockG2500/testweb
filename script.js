@@ -57,7 +57,7 @@ function fetchUserProfile(code, SCOPE) {
     console.error('Error exchanging authorization code for access token:', error);
   });
 }
-function show() {
-   alert(`this is ${User.name}, ${User.id}, ${User.email}`);
+function show(user) {
+   alert(`this is ${user.name}, ${user.id}, ${user.email}`);
 }
 
