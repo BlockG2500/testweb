@@ -1,11 +1,4 @@
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const code = urlParams.get('code');
-const SCOPE = 'identify email guilds';
-if (code) {
-  const SCOPE = 'identify email guilds';
-  fetchUserProfile(code, SCOPE)
-}
+
 
 function login() {
   const authUrl = "https://discord.com/api/oauth2/authorize?client_id=1095020466852348024&redirect_uri=https%3A%2F%2Fblockg2500.github.io%2Ftestweb%2F&response_type=token&scope=identify%20email%20guilds";
