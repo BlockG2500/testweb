@@ -37,6 +37,7 @@ function fetchUserProfile(code) {
     .then(user => {
       console.log(user);
       showUserInfo(user);
+      return user;
     })
     .catch(error => {
       console.error('Failed to fetch user data:', error);
