@@ -11,11 +11,13 @@ fetch('https://discord.com/api/users/@me', {
 		})
 			.then(result => result.json())
 			.then(response => {
-        alert(user.id);
-				return { username, discriminator, email, id } = response
+				const { username, discriminator, email, id } = response
+        alert(`Id: ${id}, tags: ${discriminator}, email: ${email}, username: ${username}`);
+        return response
 			})
 			.catch(console.error);
 	};
+const { username, discriminator, email, id } = response
 function show(username, id, discriminator, email) {
    alert(`Id: ${id}, tags: ${discriminator}, email: ${email}, username: ${username}`);
 }
