@@ -59,7 +59,6 @@ function fetchUserProfile(code) {
         console.error('Failed to fetch guilds:', error);
       });
     })
-  })
     .catch(error => {
       console.error('Failed to fetch user data:', error);
     });
@@ -68,6 +67,7 @@ function fetchUserProfile(code) {
     console.error('Token exchange failed:', error);
   });
 }
+
 function showUserInfo(user) {
   alert(`ID: ${user.id}, Email: ${user.email}`);
 }
