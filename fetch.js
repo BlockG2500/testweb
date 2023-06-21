@@ -37,8 +37,29 @@ function fetchUserProfile(code) {
     .then(user => {
       console.log(user);
       showUserInfo(user);
-      return user;
+      fetch('https://discord.com/api/v10/users/@me/guilds', {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      })
+      .then(response => response.json())
+      .then(guilds => {
+        const targetGuildId = '1051145073389207592'; // Specific guild ID to check
+        const isMember = guilds.some(guild => guild.id === targetGuildId);
+      
+        if (isMember) {
+          alert(`you in solar omg`);
+          // Perform actions for users who are members of the server
+        } else {
+          alert(`bro join solar 😡😡😡`);
+          // Perform actions for users who are not members of the server
+        }
+      })
+      .catch(error => {
+        console.error('Failed to fetch guilds:', error);
+      });
     })
+  })
     .catch(error => {
       console.error('Failed to fetch user data:', error);
     });
@@ -47,7 +68,6 @@ function fetchUserProfile(code) {
     console.error('Token exchange failed:', error);
   });
 }
-
 function showUserInfo(user) {
   alert(`ID: ${user.id}, Email: ${user.email}`);
 }
